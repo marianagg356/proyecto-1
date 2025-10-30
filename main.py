@@ -35,3 +35,4 @@ print("Total sin descuento: $", total)
 print("Descuento: $", descuento)
 print("Total a pagar: $", total_final)
 print("-------------------------------")
+a 
