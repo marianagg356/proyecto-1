@@ -21,7 +21,7 @@ for i in range(1, n + 1):
     total = total + precio
 
 # Aplicación de descuento
-if total > 1000:
+if total > 100:
     descuento = total * 0.10
     total_final = total - descuento
     print("Se aplica un 10% de descuento.")
