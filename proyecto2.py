@@ -18,17 +18,48 @@ def main():
     - cargar productos desde CSV
     - mostrar menú en un ciclo
     """
-    # Aquí va el código del programa principal
-    # cargar inventario, menú, opciones, etc.
-    ...
+    nombre = solicitar_nombre()
+    mensaje_bienvenida(nombre)
+
+inventario = cargar_productos_csv()
+
+while True:
+    opcion = mostrar_menu_principal()
+
+if opcion == "1":
+    agregar_producto(inventario)
+
+elif opcion == "2":
+    mostrar_productos(inventario)
+
+elif opcion == "3":
+    buscar_producto(inventario)
+
+elif opcion == "4":
+    menu_ventas(inventario)
+
+elif opcion == "5":
+    salida_manual(inventario)
+
+elif opcion == "6":
+    reporte_ventas()
+
+elif opcion == "7":
+    if cerrar_programa():
+        break
+
+elif opcion == "8":
+    reporte_salidas()}
+
+else:
+    print("Opcion invalida")
 
 
 def solicitar_nombre():
     """
     Pide el nombre del usuario y lo regresa.
     """
-    # Aquí va el input() del nombre
-    ...
+    return input("Ingresa tu nombre:")
 
 
 def mensaje_bienvenida(nombre):
@@ -197,3 +228,4 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
