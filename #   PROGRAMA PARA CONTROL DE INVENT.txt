@@ -57,10 +57,11 @@ def mostrar_menu_principal():
 
 def capturar_fecha():
 # forma 1:
-    fecha_str = input("ingresa la fecha en dd/mm/aaaa)
-          dia = int(input("dia: )
-          mes = int(input("mes: )
-         anio = int(input("año: ) 
+    from datetime import date, datetime
+
+# Solo la fecha (día, mes, año)
+hoy = date.today()
+print("Fecha de hoy:", hoy
     """
 #    Pide la fecha (dd/mm/aaaa) y la regresa como tupla.
 
@@ -196,3 +197,4 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
