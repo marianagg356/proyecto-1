@@ -56,8 +56,14 @@ def mostrar_menu_principal():
 
 
 def capturar_fecha():
+# forma 1:
+    fecha_str = input("ingresa la fecha en dd/mm/aaaa)
+          dia = int(input("dia: )
+          mes = int(input("mes: )
+         anio = int(input("año: ) 
     """
-    Pide la fecha (dd/mm/aaaa) y la regresa como tupla.
+#    Pide la fecha (dd/mm/aaaa) y la regresa como tupla.
+
     """
     # validar formato y convertir a tupla
     ...
@@ -188,4 +194,5 @@ def cerrar_programa():
     main()
 
 #vamos equipo #fuerzaleona 
+
 #si se puede 
