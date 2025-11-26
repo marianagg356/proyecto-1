@@ -148,19 +148,42 @@ def buscar_producto(inventario):
 
 
 def menu_ventas(inventario):
+     """
+    Lógica de ventas. Usa fecha actual automáticamente.
     """
-    Todo lo de ventas:
-    - pedir fecha
-    - pedir producto
-    - pedir cantidad
-      * si no hay suficientes, cancelar
-    - calcular total
-    - aplicar descuento por mayoreo
-    - actualizar inventario
-    - guardar venta en ventas.csv
-    """
-    # lógica de venta completa
-    ...
+    producto = input("Producto: ").lower()
+
+    if producto not in inventario:
+        print("No existe ese producto.")
+        return
+
+    cantidad = int(input("Cantidad a vender: "))
+
+    if cantidad > inventario[producto]["cantidad"]:
+        print("No hay suficientes existencias.")
+        return
+
+    precio = inventario[producto]["precio"]
+    subtotal = precio * cantidad
+
+    if cantidad >= 10:
+        descuento = subtotal * 0.10
+    else:
+        descuento = 0
+
+    total = subtotal - descuento
+
+    # Reducir existencias
+    inventario[producto]["cantidad"] -= cantidad
+    guardar_productos_csv(inventario)
+
+    # Obtener fecha actual automáticamente
+    ahora = datetime.now()
+    fecha_str = f"{ahora.day:02d}/{ahora.month:02d}/{ahora.year}"
+
+    guardar_venta_csv(fecha_str, producto, cantidad, precio, subtotal, descuento, total)
+
+    print(f"Venta realizada. Total: ${total:.2f}")
 
 
 def guardar_venta_csv(fecha, producto, cantidad, precio, subtotal, descuento, total):
@@ -172,17 +195,28 @@ def guardar_venta_csv(fecha, producto, cantidad, precio, subtotal, descuento, to
 
 
 def salida_manual(inventario):
+   """
+    Registra una salida manual. Fecha actual automáticamente.
     """
-    Restar manualmente cantidades del inventario:
-    - pedir fecha
-    - pedir producto
-    - pedir cantidad
-    - actualizar inventario
-    - guardar salida en salidas.csv
-    """
-    # lógica de salida manual
-    ...
+    producto = input("Producto: ").lower()
 
+    if producto not in inventario:
+        print("No existe ese producto.")
+        return
+
+    cantidad = int(input("Cantidad a sacar: "))
+
+    if cantidad > inventario[producto]["cantidad"]:
+        print("Cantidad insuficiente.")
+        return
+
+    # Reducir existencias
+    inventario[producto]["cantidad"] -= cantidad
+    guardar_productos_csv(inventario)
+
+    # Fecha actual
+    ahora = datetime.now()
+    fecha_str = f"{ahora.day:02d}/{ahora.month:02d}/{ahora.year}"
 
 def guardar_salida_csv(fecha, producto, cantidad):
     """
@@ -230,6 +264,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
