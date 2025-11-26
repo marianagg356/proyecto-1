@@ -72,15 +72,16 @@ def mensaje_bienvenida(nombre):
 
 def mostrar_menu_principal():
     """
-    Muestra el menú principal:
-    1. agregar producto
-    2. mostrar productos
-    3. buscar producto
-    4. venta
-    5. salida manual
-    6. reporte de ventas
-    7. cerrar programa
-    8. reporte de salidas
+     print(".....Menu principal.....")
+    print("1. Agregar un producto")
+    print("2. Mostrar productos")
+    print("3. Buscar producto")
+    print("4. Venta")
+    print("5. Salida manual")
+    print("6. Reporte de ventas")
+    print("7. Cerrar programa")
+    print("8. Reporte de salidas")
+    return input("Elige opción: ")
     """
     # imprimir menú y pedir opción con input()
     ...
@@ -228,6 +229,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
