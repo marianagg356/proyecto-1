@@ -73,7 +73,7 @@ def mensaje_bienvenida(nombre):
 
 def mostrar_menu_principal():
     """
-     print(".....Menu principal.....")
+    print(".....Menu principal.....")
     print("1. Agregar un producto")
     print("2. Mostrar productos")
     print("3. Buscar producto")
@@ -106,11 +106,20 @@ print("Fecha de hoy:", hoy
 def cargar_productos_csv():
     """
     Carga los productos desde productos.csv.
-    Regresa un diccionario tipo:
-    { "coca": {"precio": 20.0, "cantidad": 5}, ... }
-    """
-    # abrir CSV, leer líneas y llenar diccionario
-    ...
+    inventario = {}
+
+    try:
+        with open(archivo_productos, "r") as file:
+            lector = csv.reader(file)
+            for nombre, precio, cantidad in lector:
+                inventario[nombre] = {
+                    "precio": float(precio),
+                    "cantidad": int(cantidad)
+                }
+    except:
+        pass
+
+    return inventario
 
 
 def guardar_productos_csv(inventario):
@@ -264,6 +273,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
