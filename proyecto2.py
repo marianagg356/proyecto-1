@@ -8,6 +8,7 @@ from datetime import datetime
 archivo_productos = "productos.csv"
 archivo_ventas = "ventas.csv"
 archivo_salidas = "salidas.csv"
+archivo_sistema = "reporte_sistema.txt
 
 
 def main():
@@ -229,6 +230,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
