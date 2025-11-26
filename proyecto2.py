@@ -127,29 +127,38 @@ def guardar_productos_csv(inventario):
 
 
 def agregar_producto(inventario):
-    """
-    Agrega un producto nuevo o suma cantidad si ya existe.
-    Actualiza el archivo CSV después.
-    """
-    # pedir nombre, precio, cantidad y actualizar inventario
-    ...
+    
+    nombre = input("Nombre del producto: ").lower()
+    precio = float(input("Precio: "))
+    cantidad = int(input("Cantidad: "))
+
+    if nombre in inventario:
+        inventario[nombre]["cantidad"] += cantidad
+    else:
+        inventario[nombre] = {"precio": precio, "cantidad": cantidad}
+
+    guardar_productos_csv(inventario)
+    print("Producto agregado correctamente.")
 
 
 def mostrar_productos(inventario):
-    """
-    Muestra todos los productos con precio y cantidad.
-    """
-    # recorrer inventario e imprimir todo
-    ...
+    print("\n--- INVENTARIO ---")
+    if not inventario:
+        print("No hay productos.")
+        return
+
+    for nombre, datos in inventario.items():
+        print(f"{nombre} | Precio: {datos['precio']} | Cantidad: {datos['cantidad']}")
+
 
 
 def buscar_producto(inventario):
-    """
-    Pregunta: '¿Qué producto buscas perro?'
-    Si existe lo muestra; si no, avisa que no está.
-    """
-    # input(), buscar en inventario, mostrar datos
-    ...
+     p = input("¿Qué producto buscas? ").lower()
+    if p in inventario:
+        datos = inventario[p]
+        print(f"{p}: Precio {datos['precio']}, Cantidad {datos['cantidad']}")
+    else:
+        print("Ese producto no existe.")
 
 
 def menu_ventas(inventario):
@@ -269,6 +278,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
