@@ -64,15 +64,11 @@ def solicitar_nombre():
 
 
 def mensaje_bienvenida(nombre):
-    """
-    Manda un mensaje de bienvenida y espera 5 segundos.
-    """
-    # print(), time.sleep(5), etc.  #el time.sleep es necesario no esta a discusión 
-    … 
+   print(f"\nBienvenido{nombre},cargando el sistema...")
 
 
 def mostrar_menu_principal():
-    """
+
     print(".....Menu principal.....")
     print("1. Agregar un producto")
     print("2. Mostrar productos")
@@ -83,9 +79,7 @@ def mostrar_menu_principal():
     print("7. Cerrar programa")
     print("8. Reporte de salidas")
     return input("Elige opción: ")
-    """
-    # imprimir menú y pedir opción con input()
-    ...
+    
 
 
 def capturar_fecha():
@@ -104,9 +98,7 @@ print("Fecha de hoy:", hoy
 
 
 def cargar_productos_csv():
-    """
-    Carga los productos desde productos.csv.
-    inventario = {}
+   inventario = {}
 
     try:
         with open(archivo_productos, "r") as file:
@@ -116,18 +108,22 @@ def cargar_productos_csv():
                     "precio": float(precio),
                     "cantidad": int(cantidad)
                 }
-    except:
+    except FileNotFoundError:
+       
         pass
 
     return inventario
 
-
 def guardar_productos_csv(inventario):
     """
-    Guarda todo el inventario en el archivo productos.csv.
+    Guarda inventario en productos.csv.
     """
-    # abrir productos.csv en modo escritura y guardar todo
-    ...
+    with open(archivo_productos, "w", newline="") as file:
+        escritor = csv.writer(file)
+        for nombre, datos in inventario.items():
+            escritor.writerow([nombre, datos["precio"], datos["cantidad"]])
+
+   
 
 
 def agregar_producto(inventario):
@@ -273,6 +269,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
