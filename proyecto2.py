@@ -2,7 +2,7 @@
 
 import time     # para la espera del mensaje de bienvenida
 import csv      # para guardar y leer archivos CSV
-
+from datetime import datetime 
 
 # Archivos donde se guarda todo
 archivo_productos = "productos.csv"
@@ -228,4 +228,5 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
