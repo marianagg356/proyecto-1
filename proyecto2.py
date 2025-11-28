@@ -164,12 +164,16 @@ def mostrar_productos(inventario):
 
 
 def buscar_producto(inventario):
-     p = input("¿Qué producto buscas? ").lower()
-    if p in inventario:
-        datos = inventario[p]
-        print(f"{p}: Precio {datos['precio']}, Cantidad {datos['cantidad']}")
-    else:
-        print("Ese producto no existe.")
+     def buscar_producto():
+         nombre = input("Que producto buscas?: ?")
+         if nombre in inventario:
+             d = inventario[nombre]
+             print ("\nNombre: ", nombre)
+             print ("Precio: ", d["precio"])
+             print ("Cantidad disponible: ", d["cantidad"], "\n")
+         else:
+             print("No existe ese producto.\n)
+         
 
 
 def menu_ventas(inventario):
@@ -309,6 +313,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
