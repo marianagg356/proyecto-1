@@ -241,13 +241,15 @@ def guardar_salida_csv(fecha, producto, cantidad):
 
 
 def reporte_ventas():
-    """
-    Permite ver ventas:
-    - por día
-    - por mes
-    - por año
-    leyendo ventas.csv
-    """
+  print("\n ------REPORTE DE VENTAS-----")
+    try:
+         with open(archivo_ventas,newline='',encoding='utf-8') as f:
+         lector = csv.reader(f)
+         for line in lector:
+         print(linea)
+    except FileNotFoundError:
+    print("no hay ventas registradas")
+    
     # leer CSV y filtrar según lo que el usuario pida
     ...
 
@@ -278,6 +280,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
