@@ -88,11 +88,22 @@ def capturar_fecha():
 
 # Solo la fecha (día, mes, año)
 hoy = date.today()
-print("Fecha de hoy:", hoy
+print("Fecha de hoy:", hoy)
     """
 #    Pide la fecha (dd/mm/aaaa) y la regresa como tupla.
 
     """
+ while True:
+        fecha = input("Ingresa la fecha (dd/mm/aaaa): ")
+
+        try:
+            dia, mes, anio = map(int, fecha.split("/"))
+            datetime(anio, mes, dia)   # valida
+
+            return (dia, mes, anio)
+
+        except ValueError:
+            print("❌ Fecha inválida, intenta de nuevo.")
     # validar formato y convertir a tupla
     ...
 
@@ -148,7 +159,7 @@ def mostrar_productos(inventario):
         return
 
     for nombre, datos in inventario.items():
-        print(f"{nombre} | Precio: {datos['precio']} | Cantidad: {datos['cantidad']}")
+        print(f"{nombre} | Precio: ${datos['precio']} | Cantidad: {datos['cantidad']}")
 
 
 
@@ -298,6 +309,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
