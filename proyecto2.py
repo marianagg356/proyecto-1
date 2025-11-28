@@ -233,11 +233,12 @@ def salida_manual(inventario):
     fecha_str = f"{ahora.day:02d}/{ahora.month:02d}/{ahora.year}"
 
 def guardar_salida_csv(fecha, producto, cantidad):
-    """
-    Guarda una salida manual en el archivo salidas.csv.
-    """
+  with open(archivo_salidas,"a", newline= '',encoding="utf-8" as f:
+      escritor = csv.writer(f)
+      escritor.writerow([fecha,producto,cantidad])
     # write en CSV
-    ...
+
+    ----------------------------------------------------------------
 
 
 def reporte_ventas():
@@ -255,13 +256,15 @@ def reporte_ventas():
 
 
 def reporte_salidas():
-    """
-    Permite ver salidas:
-    - por día
-    - por mes
-    - por año
-    leyendo salidas.csv
-    """
+    print("\n--- REPORTE DE SALIDAS ---")
+try:
+with open(archivo_salidas, newline='', encoding='utf-8') as f:
+lector = csv.reader(f)
+for linea in lector:
+print(linea)
+except FileNotFoundError:
+print("No hay salidas registradas.")
+   
     # leer CSV y mostrar según filtro
     ...
 
@@ -280,6 +283,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
