@@ -8,7 +8,7 @@ from datetime import datetime
 archivo_productos = "productos.csv"
 archivo_ventas = "ventas.csv"
 archivo_salidas = "salidas.csv"
-archivo_sistema = "reporte_sistema.txt
+archivo_sistema = "reporte_sistema.txt"
 
 
 def main():
@@ -21,8 +21,7 @@ def main():
     """
     nombre = solicitar_nombre()
     mensaje_bienvenida(nombre)
-
-inventario = cargar_productos_csv()
+    inventario = cargar_productos_csv()
 
 while True:
     opcion = mostrar_menu_principal()
@@ -65,6 +64,7 @@ def solicitar_nombre():
 
 def mensaje_bienvenida(nombre):
    print(f"\nBienvenido{nombre},cargando el sistema...")
+   time.sleep(5)
 
 
 def mostrar_menu_principal():
@@ -101,7 +101,7 @@ def cargar_productos_csv():
    inventario = {}
 
     try:
-        with open(archivo_productos, "r") as file:
+        with open(archivo_productos, "r", encoding="utf-8") as file:
             lector = csv.reader(file)
             for nombre, precio, cantidad in lector:
                 inventario[nombre] = {
@@ -118,7 +118,7 @@ def guardar_productos_csv(inventario):
     """
     Guarda inventario en productos.csv.
     """
-    with open(archivo_productos, "w", newline="") as file:
+    with open(archivo_productos, "w", newline="", encoding="utf-8") as file:
         escritor = csv.writer(file)
         for nombre, datos in inventario.items():
             escritor.writerow([nombre, datos["precio"], datos["cantidad"]])
@@ -204,6 +204,9 @@ def guardar_venta_csv(fecha, producto, cantidad, precio, subtotal, descuento, to
     """
     Guarda una venta nueva en ventas.csv.
     """
+     with open(archivo_ventas, "a", newline="", encoding="utf-8") as archivo :
+        escritor = csv.writer(archivo)
+        escritor.writerow([fecha, producto, cantidad, precio, subtotal, descuento, total])
     # abrir CSV en modo append y escribir la venta
     ...
 
@@ -218,7 +221,12 @@ def salida_manual(inventario):
         print("No existe ese producto.")
         return
 
-    cantidad = int(input("Cantidad a sacar: "))
+    
+    try:
+        cantidad = int(input("Cantidad a sacar: "))
+    except ValueError:
+        print("La cantidad debe ser un número entero.")
+        return
 
     if cantidad > inventario[producto]["cantidad"]:
         print("Cantidad insuficiente.")
@@ -231,9 +239,11 @@ def salida_manual(inventario):
     # Fecha actual
     ahora = datetime.now()
     fecha_str = f"{ahora.day:02d}/{ahora.month:02d}/{ahora.year}"
+     print("Salida registrada correctamente.")
+
 
 def guardar_salida_csv(fecha, producto, cantidad):
-  with open(archivo_salidas,"a", newline= '',encoding="utf-8" as f:
+  with open(archivo_salidas,"a", newline= '',encoding="utf-8") as f:
       escritor = csv.writer(f)
       escritor.writerow([fecha,producto,cantidad])
     # write en CSV
@@ -257,14 +267,14 @@ def reporte_ventas():
 
 def reporte_salidas():
     print("\n--- REPORTE DE SALIDAS ---")
-try:
-with open(archivo_salidas, newline='', encoding='utf-8') as f:
-lector = csv.reader(f)
-for linea in lector:
-print(linea)
-except FileNotFoundError:
-print("No hay salidas registradas.")
-   
+    try:
+        with open(archivo_salidas, newline="", encoding="utf-8") as f:
+            lector = csv.reader(f)
+            for linea in lector:
+                print(linea)
+    except FileNotFoundError:
+        print("No hay salidas registradas.")
+
     # leer CSV y mostrar según filtro
     ...
 
@@ -272,9 +282,14 @@ print("No hay salidas registradas.")
 def cerrar_programa():
     """
     Pregunta si se quiere cerrar.
-    si = muestra 'gracias por usar el programa puto'
+    si = muestra 'gracias por usar el programa'
     no = regresa al menú
     """
+     opcion = input("¿Seguro que quieres salir? (si/no): ").lower()
+    if opcion == "si":
+        print("Gracias por usar el programa.")
+        return True
+    return False
     # input(), decisión del usuario
     ...
 
@@ -283,6 +298,7 @@ def cerrar_programa():
 #vamos equipo #fuerzaleona 
 
 #si se puede 
+
 
 
 
